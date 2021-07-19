@@ -4,6 +4,7 @@
   "description": "this is a project by Joey K Lee and Codind train, executed by Erik Vogler",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
