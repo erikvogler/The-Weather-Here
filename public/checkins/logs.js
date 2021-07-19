@@ -30,29 +30,30 @@ async function getData() {
   const response = await fetch('/api');
   const data = await response.json();
   console.log(data);
-  for (item of data) {
+  for (let item of data) {
+    console.log(item);
     const marker = L.marker([item.lat, item.lon]).addTo(mymap);
     let txt = `
       latitude: ${item.lat}&deg;<br />
       longitude: ${item.lon}&deg;<br />
-      I'm sitting out here in ${item.weather.name} and it feels like ${item.weather.main.temp}&deg; C. outside.<br />`
+      I'm sitting out here in ${item.weather.name} and it feels like ${item.weather.main.temp}&deg; C. outside.<br />`;
 
-    const root = document.createElement('p');
-    const geo = document.createElement('div');
-    const date = document.createElement('div');
+    // const root = document.createElement('p');
+    // const geo = document.createElement('div');
+    // const date = document.createElement('div');
 
-    geo.textContent = `${item.lat}, ${item.lon}`;
-    const dateString = new Date(item.timestamp).toLocaleString();
-    date.textContent = dateString;
+    // geo.textContent = `${item.lat}, ${item.lon}`;
+    // const dateString = new Date(item.timestamp).toLocaleString();
+    // date.textContent = dateString;
 
-    root.append(geo, date );
-    datapoints.push({elt: root, time: item.timestamp});
-    document.body.append(root);
+    // root.append(geo, date );
+    // datapoints.push({elt: root, time: item.timestamp});
+    // document.body.append(root);
 
     if (item.air.value < 0) {
-      txt += ' No air reading.'
+      txt += ' No air reading.';
     } else {
-      txt += `The AirQ for ${item.air.measurements[0].parameter} is ${item.air.measurements[0].value} </span>${item.air.measurements[0].unit} last read on ${item.air.lastUpdated}<br />`
+      txt += `The AirQ for ${item.air.parameter} is ${item.air.value} </span>${item.air.unit} last read on ${item.air.lastUpdated}<br />`;
     }
     marker.bindPopup(txt);
   }

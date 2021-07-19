@@ -53,7 +53,7 @@ app.get('/sky/:latlon', async (request, response) => {
 
   const data = {
     weather: weather_data,
-    air_quality: aq_data,
+    air_quality: aq_data
   };
 
   console.log(data);

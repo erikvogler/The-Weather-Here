@@ -4,7 +4,7 @@
     if ('geolocation' in navigator) {
       console.log('geolocation is available');
       navigator.geolocation.getCurrentPosition(async position => {
-        let lat,lon,weather,air;
+        let lat, lon, weather, air;
         try {
           lat = position.coords.latitude
           lon = position.coords.longitude
@@ -16,19 +16,19 @@
           const response = await fetch(api_url);
           const json = await response.json();
           console.log(json);
-          console.log(json.air_quality.results[0]);
-          air = json.air_quality.results[0];
           weather = json.weather
+          air = json.air_quality.results[0].measurements[0];
           document.getElementById('summary').textContent = weather.name;
           document.getElementById('temp_f').textContent = weather.main.temp;
-          document.getElementById('air_parameter').textContent = air.measurements[0].parameter;
-          document.getElementById('air_value').textContent = air.measurements[0].value;
-          document.getElementById('air_unit').textContent = air.measurements[0].unit;
+          document.getElementById('air_parameter').textContent = air.parameter;
+          document.getElementById('air_value').textContent = air.value;
+          document.getElementById('air_unit').textContent = air.unit;
         } catch (error) {
           console.error(error);
           air = { value: -1 };
+          document.getElementById('air_value').textContent = 'NO READING';
           console.log('something went wrong!');
-        };
+        }
 
         const data = { lat, lon, weather, air };
         const options = {
