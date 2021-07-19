@@ -27,7 +27,7 @@
         } catch (error) {
           console.error(error);
           air = { value: -1 };
-          console.log('something wnet wrong!');
+          console.log('something went wrong!');
         };
 
         const data = { lat, lon, weather, air };
