@@ -1,0 +1,19 @@
+{
+  "name": "the_weather_api_calling_app",
+  "version": "1.0.0",
+  "description": "this is a project by Joey K Lee and Codind train, executed by Erik Vogler",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "nedb": "^1.8.0",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.12"
+  }
+}
